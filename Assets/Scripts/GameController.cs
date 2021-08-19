@@ -2,15 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class GameController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Player player;
+    private InputController input;
+    private void Awake() 
     {
-        
+        player = GameObject.FindObjectOfType<Player>();
+        input = GameObject.FindObjectOfType<InputController>();
+        input.Init();
+
+        input.OnDirection.AddListener(player.SetDirectionalInput);
+        input.OnJumpButtonDown.AddListener(player.OnJumpInputDown);
+        input.OnJumpButtonUp.AddListener(player.OnJumpInputUp);
     }
 
-    // Update is called once per frame
     void Update()
     {
         
