@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    private Player player;
+    private PlayerController player;
     private InputController input;
     private void Awake() 
     {
-        player = GameObject.FindObjectOfType<Player>();
+        player = GameObject.FindObjectOfType<PlayerController>();
         input = GameObject.FindObjectOfType<InputController>();
         input.Init();
 

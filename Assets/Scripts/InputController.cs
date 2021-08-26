@@ -50,7 +50,7 @@ public class InputController : MonoBehaviour
     {
         Direction = new Vector2(Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical"));
         OnDirection.Invoke(Direction);
-
+        
         if(Input.GetKeyDown(KeyCode.Space))
         {
             OnJumpButtonDown.Invoke();

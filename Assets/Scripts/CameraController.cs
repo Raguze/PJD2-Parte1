@@ -15,7 +15,7 @@ public class CameraController : MonoBehaviour
     private void Awake() {
         cameraTransform = GetComponent<Camera>().transform;
 
-        Target = GameObject.FindObjectOfType<Player>().transform;
+        Target = GameObject.FindObjectOfType<PlayerController>().transform;
     }
 
     private void LateUpdate() {
