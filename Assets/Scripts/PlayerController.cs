@@ -90,7 +90,10 @@ public class PlayerController : MonoBehaviour
         RayCastsVertical();
 
         float velocityY = Velocity.y;
-
+        // if(jumpInputDown)
+        // {
+            
+        // }
         if(!CollisionBottom)
         {
             velocityY += Gravity * Time.deltaTime;
