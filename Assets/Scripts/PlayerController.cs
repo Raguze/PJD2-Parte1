@@ -31,6 +31,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    protected Transform weaponsTransform;
+
+    public List<Weapon> Weapons = new List<Weapon>();
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -38,6 +42,28 @@ public class PlayerController : MonoBehaviour
         Direction = Vector2.zero;
         Velocity = Vector2.zero;
         CollisionBottom = false;
+
+        GetWeaponsTransform();
+    }
+
+    protected void GetWeaponsTransform()
+    {
+        if(weaponsTransform == null)
+        {
+            weaponsTransform = tf.Find("Weapons");
+        }
+    }
+
+    public void AddWeapon(Weapon weapon)
+    {
+        Weapons.Add(weapon);
+        GetWeaponsTransform();
+        weapon.transform.parent = weaponsTransform;
+    }
+
+    public Weapon[] GetWeapons()
+    {
+        return Weapons.ToArray();
     }
 
     public void SetDirectionalInput(Vector2 direction)
@@ -79,7 +105,7 @@ public class PlayerController : MonoBehaviour
             hitDistance = hit.distance;
             //Debug.DrawRay(hit.point,hit.distance * Vector3.down,Color.magenta);
             Debug.DrawLine(origin,hit.point,Color.magenta);
-            Debug.Log(hit.distance);
+            //Debug.Log(hit.distance);
             CollisionBottom = hit.distance <= 0.02f;
             //Debug.Break();
         }

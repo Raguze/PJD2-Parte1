@@ -15,6 +15,12 @@ public class GameController : MonoBehaviour
         input.OnDirection.AddListener(player.SetDirectionalInput);
         input.OnJumpButtonDown.AddListener(player.OnJumpInputDown);
         input.OnJumpButtonUp.AddListener(player.OnJumpInputUp);
+
+        Pistol pistolPrefab = Resources.Load<Pistol>("PlayerWeapons/Pistol");
+        WeaponDTO pistolDTO = Resources.Load<WeaponDTO>("DTO/Pistol");
+        Weapon pistol = Instantiate<Weapon>(pistolPrefab);
+        pistol.Init(pistolDTO);
+        player.AddWeapon(pistol);
     }
 
     void Update()

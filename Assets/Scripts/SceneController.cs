@@ -12,7 +12,7 @@ public class SceneController : MonoBehaviour
         // prefabs.Add(Resources.Load<GameObject>("Prefabs/Block-5-1"));
         // prefabs.Add(Resources.Load<GameObject>("Prefabs/Block-10-1"));
 
-         prefabs.AddRange(Resources.LoadAll<GameObject>("Prefabs"));
+         prefabs.AddRange(Resources.LoadAll<GameObject>("Prefabs/Blocks"));
 
         foreach (var prefab in prefabs)
         {
