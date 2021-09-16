@@ -61,9 +61,9 @@ public class PlayerController : MonoBehaviour
         weapon.transform.parent = weaponsTransform;
     }
 
-    public Weapon[] GetWeapons()
+    public List<Weapon> GetWeapons()
     {
-        return Weapons.ToArray();
+        return Weapons;
     }
 
     public void SetDirectionalInput(Vector2 direction)

@@ -1,0 +1,18 @@
+{
+    "items": [
+        0,
+        1,
+        2,
+        3,
+        4
+    ],
+    "Name": "Revolver",
+    "Ammo": 6,
+    "AmmoMax": 6,
+    "Damage": 12,
+    "FireRate": 1.5,
+    "ReloadSpeed": 2.0,
+    "BulletSpeed": 5.0,
+    "Distance": 5.0,
+    "Type": 1
+}

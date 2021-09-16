@@ -6,9 +6,8 @@ using Factory = FactoryController;
 public enum WeaponType { None, Pistol, Shotgun, MachineGun, Sniper, RocketLauncher }
 
 [System.Serializable]
-public class Weapon : MonoBehaviour
+public class Weapon : SerializableObject
 {
-    public string name1 = "@#Weapon";
     [SerializeField]
     public string Name { get; protected set; }
     public int Ammo { get; protected set; }
@@ -20,6 +19,7 @@ public class Weapon : MonoBehaviour
     public float Distance { get; protected set; }
     public WeaponType Type { get; protected set; }
 
+    [SerializeField]
     public WeaponDTO weaponDTO;
 
     protected bool isFiring;
@@ -33,6 +33,35 @@ public class Weapon : MonoBehaviour
 
     [SerializeField]
     protected Transform bulletRespawn;
+
+    public override BaseSave Serialize()
+    {
+        WeaponSave save = new WeaponSave() {
+            Ammo = this.Ammo,
+            AmmoMax = this.AmmoMax,
+            BulletSpeed = this.BulletSpeed,
+            Damage = this.Damage,
+            Distance = this.Distance,
+            FireRate  = this.FireRate,
+            Name = this.Name,
+            ReloadSpeed = this.ReloadSpeed,
+            Type = this.Type,
+        };
+        return save;
+    }
+
+    public override void Deserialize(BaseSave save)
+    {
+        WeaponSave ws = save as WeaponSave; 
+        Name = ws.Name;
+        Ammo = ws.Ammo;
+        AmmoMax = ws.AmmoMax;
+        Damage = ws.Damage;
+        FireRate = ws.FireRate;
+        ReloadSpeed = ws.ReloadSpeed;
+        BulletSpeed = ws.BulletSpeed;
+        Distance = ws.Distance;
+    }
 
     protected virtual void Awake()
     {
